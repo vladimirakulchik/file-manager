@@ -1,24 +1,26 @@
-import {
-    osCommandListener,
-    upCommandListener,
-    exitCommandListener
-} from './listener/index.js';
+import * as listeners from './listener/index.js';
 
 export const commandConfig = [
     [
         '.exit',
-        exitCommandListener,
+        listeners.exitCommandListener,
     ],
     [
         'up',
-        upCommandListener,
+        listeners.upCommandListener,
     ],
     [
-        'os',
-        osCommandListener,
+        'cd',
+        listeners.cdCommandListener,
     ],
 
 
+
+
+    [
+        'os',
+        listeners.osCommandListener,
+    ],
 
 
     // [

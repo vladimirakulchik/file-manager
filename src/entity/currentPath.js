@@ -1,4 +1,5 @@
-import { resolve, parse } from 'path';
+import { accessSync, constants } from 'fs';
+import { resolve, parse, isAbsolute } from 'path';
 
 export class CurrentPath
 {
@@ -21,7 +22,14 @@ export class CurrentPath
     }
 
     changeTo(newPath) {
-        // set new path
+        const resolvedPath = resolve(this.#path, newPath);
+
+        try {
+            accessSync(resolvedPath, constants.F_OK);
+            this.#path = resolvedPath;
+        } catch (err) {
+            throw new Error('newPath does not exist');
+        }
     }
 
     #isRootPath() {
