@@ -1,13 +1,14 @@
-import { readdirSync } from 'fs';
+import { resolve } from 'path';
+import { createEmptyFile } from '../../../action/createEmptyFile.js';
 import { InvalidInputException } from '../../../exception/invalidInput.js';
 
-export const lsCommandListener = (command) => {
+export const addCommandListener = (command) => {
     const parameters = command.getParatemers();
 
-    if (parameters.length !== 0) {
+    if (parameters.length !== 1) {
         throw new InvalidInputException('Invalid input');
     }
 
     const path = command.getCurrentPath().getCurrentWorkingDirectory();
-    console.log(readdirSync(path));
+    createEmptyFile(resolve(path, parameters[0]));
 }

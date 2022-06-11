@@ -17,6 +17,10 @@ export const commandConfig = [
         'ls',
         listeners.lsCommandListener,
     ],
+    [
+        'add',
+        listeners.addCommandListener,
+    ],
 
 
 

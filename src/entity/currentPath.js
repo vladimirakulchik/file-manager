@@ -1,5 +1,5 @@
 import { accessSync, constants } from 'fs';
-import { resolve, parse, isAbsolute } from 'path';
+import { resolve, parse } from 'path';
 
 export class CurrentPath
 {
