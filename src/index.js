@@ -6,7 +6,7 @@ import {
     printGoodbye,
     printCurrentWorkingDir 
 } from './app/messages.js';
-import { getAppUser } from './app/username.js';
+import { getAppUser } from './app/getAppUser.js';
 import { commandConfig } from './command/config.js';
 import { CommandHandler } from './command/handler.js';
 import { CurrentPath } from './entity/currentPath.js';

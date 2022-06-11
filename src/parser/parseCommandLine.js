@@ -1,9 +1,12 @@
 import { Command } from '../entity/command.js';
 
+const SEPARATOR = ' ';
+
 export const parseCommandLine = (stringLine, currentPath) => {
-    // get parameters and name from string
-    const name = stringLine;
-    const parameters = [];
+    const commandArgs = stringLine.split(SEPARATOR);
+
+    const name = commandArgs[0].trim();
+    const parameters = commandArgs.slice(1);
 
     return new Command(currentPath, name, parameters);
 }

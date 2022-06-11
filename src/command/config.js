@@ -1,4 +1,5 @@
 import { ExitException } from '../exception/exit.js';
+import { osCommandListener } from './listener/os.js';
 
 export const commandConfig = [
     [
@@ -9,6 +10,15 @@ export const commandConfig = [
         'up',
         () => {console.log('ToDo create up function');}
     ],
+    [
+        'os',
+        osCommandListener
+    ],
+
+
+
+
+
     [
         'error',
         () => {throw new Error('oops');}
