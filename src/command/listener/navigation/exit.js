@@ -1,4 +1,4 @@
-import { ExitException } from '../../exception/exit.js';
+import { ExitException } from '../../../exception/exit.js';
 
 export const exitCommandListener = (command) => {
     const parameters = command.getParatemers();

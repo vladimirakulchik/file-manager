@@ -1,4 +1,4 @@
-import { InvalidInputException } from '../../exception/invalidInput.js';
+import { InvalidInputException } from '../../../exception/invalidInput.js';
 
 export const upCommandListener = (command) => {
     const parameters = command.getParatemers();

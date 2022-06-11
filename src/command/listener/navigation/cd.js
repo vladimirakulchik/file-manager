@@ -1,4 +1,4 @@
-import { InvalidInputException } from '../../exception/invalidInput.js';
+import { InvalidInputException } from '../../../exception/invalidInput.js';
 
 export const cdCommandListener = (command) => {
     const parameters = command.getParatemers();

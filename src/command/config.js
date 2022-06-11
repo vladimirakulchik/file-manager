@@ -13,6 +13,10 @@ export const commandConfig = [
         'cd',
         listeners.cdCommandListener,
     ],
+    [
+        'ls',
+        listeners.lsCommandListener,
+    ],
 
 
 

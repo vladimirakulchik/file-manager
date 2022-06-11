@@ -1,4 +1,5 @@
-export { cdCommandListener } from './cd.js';
-export { exitCommandListener } from './exit.js';
+export { cdCommandListener } from './navigation/cd.js';
+export { exitCommandListener } from './navigation/exit.js';
+export { lsCommandListener } from './navigation/ls.js';
+export { upCommandListener } from './navigation/up.js';
 export { osCommandListener } from './os.js';
-export { upCommandListener } from './up.js';
