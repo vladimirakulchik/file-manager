@@ -1,26 +1,28 @@
-import { ExitException } from '../exception/exit.js';
-import { osCommandListener } from './listener/os.js';
+import {
+    osCommandListener,
+    upCommandListener,
+    exitCommandListener
+} from './listener/index.js';
 
 export const commandConfig = [
     [
         '.exit',
-        () => {throw new ExitException();}
+        exitCommandListener,
     ],
     [
         'up',
-        () => {console.log('ToDo create up function');}
+        upCommandListener,
     ],
     [
         'os',
-        osCommandListener
+        osCommandListener,
     ],
 
 
 
 
-
-    [
-        'error',
-        () => {throw new Error('oops');}
-    ],
+    // [
+    //     'error',
+    //     () => {throw new Error('oops');}
+    // ],
 ];

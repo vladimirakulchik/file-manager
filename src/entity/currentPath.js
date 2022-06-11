@@ -1,3 +1,5 @@
+import { resolve, parse } from 'path';
+
 export class CurrentPath
 {
     #path;
@@ -11,10 +13,20 @@ export class CurrentPath
     }
 
     up() {
-        // change path to parent dir. add checks
+        if (this.#isRootPath()) {
+            return;
+        }
+
+        this.#path = resolve(this.#path, '..');
     }
 
     changeTo(newPath) {
         // set new path
+    }
+
+    #isRootPath() {
+        const rootPath = parse(this.#path).root;
+
+        return this.#path === rootPath;
     }
 }
