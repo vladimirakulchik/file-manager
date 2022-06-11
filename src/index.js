@@ -1,27 +1,23 @@
 import { EventEmitter } from 'events';
 import { createInterface } from 'readline';
+import appConfig from './app/config.js';
+import {
+    printWelcome,
+    printGoodbye,
+    printCurrentWorkingDir 
+} from './app/messages.js';
+import { getAppUser } from './app/username.js';
 import { commandConfig } from './command/config.js';
 import { CommandHandler } from './command/handler.js';
 import { CurrentPath } from './entity/currentPath.js';
+import { ExitException } from './exception/exit.js';
 import { LineWorker } from './input/lineWorker.js';
-import appConfig from './app/config.js';
+import { getHomeDir } from './os/index.js';
 
-const onStart = (username) => {
-    console.log(`Welcome to the File Manager, ${username}!`);
-}
+const username = getAppUser();
+const homeDir = getHomeDir();
 
-const onFinish = (username) => {
-    console.log(`Thank you for using File Manager, ${username}!`);
-    process.exit(0);
-}
-
-
-// get from script args 
-const username = 'AAA ';
-
-// get home dir
-const currentPath = new CurrentPath('/home'); 
-
+const currentPath = new CurrentPath(homeDir); 
 const commandMapper = new Map(commandConfig);
 const commandHandler = new CommandHandler(new EventEmitter(), commandMapper);
 const lineWorker = new LineWorker(commandHandler, currentPath);
@@ -31,14 +27,25 @@ const reader = createInterface({
     prompt: appConfig.promptString
 });
 
-onStart(username);
+printWelcome(username);
+printCurrentWorkingDir(homeDir);
 reader.prompt();
 
 reader.on('line', (stringLine) => {
-    lineWorker.processInput(stringLine);
-    reader.prompt();
+    try {
+        lineWorker.processInput(stringLine.trim());
+    } catch (error) {
+        if (error instanceof ExitException) {
+            reader.close();
+        }
+
+        console.log('Operation failed');
+    } finally {
+        reader.prompt();
+    }
 });
 
 reader.on('close', () => {
-    onFinish(username);
+    printGoodbye(username);
+    process.exit(0);
 });

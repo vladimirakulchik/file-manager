@@ -1,10 +1,16 @@
+import { ExitException } from '../exception/exit.js';
+
 export const commandConfig = [
+    [
+        '.exit',
+        () => {throw new ExitException();}
+    ],
     [
         'up',
         () => {console.log('ToDo create up function');}
     ],
     [
-        'hi',
-        (command) => {console.log(command);}
+        'error',
+        () => {throw new Error('oops');}
     ],
 ];

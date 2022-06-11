@@ -1,4 +1,6 @@
 import { parseCommandLine } from '../parser/parseCommandLine.js';
+import { InvalidInputException } from '../exception/invalidInput.js';
+import { printCurrentWorkingDir } from '../app/messages.js';
 
 export class LineWorker
 {
@@ -11,15 +13,24 @@ export class LineWorker
     }
 
     processInput(stringLine) {
+        if ('' === stringLine.trim()) {
+            return;
+        }
+
         try {
-            const command = parseCommandLine(stringLine.trim(), this.#currentPath);
-            this.#commandHandler.validateCommand(command.getName());
+            const command = parseCommandLine(stringLine, this.#currentPath);
+            this.#commandHandler.validateCommand(command);
             this.#commandHandler.handle(command);
 
-            console.log('SHOULD BE WORK DIR HERE');
-
+            const cwd = this.#currentPath.getCurrentWorkingDirectory();
+            printCurrentWorkingDir(cwd);
         } catch (error) {
-            console.error(error);
+            if (error instanceof InvalidInputException) {
+                console.log(error.message);
+                return;
+            }
+
+            throw error;
         }
     }
 }
