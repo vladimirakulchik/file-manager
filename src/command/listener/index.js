@@ -4,6 +4,7 @@ export { lsCommandListener } from './navigation/ls.js';
 export { upCommandListener } from './navigation/up.js';
 export { osCommandListener } from './os.js';
 export { addCommandListener } from './file/add.js';
+export { copyCommandListener } from './file/copy.js';
 export { deleteCommandListener } from './file/delete.js';
 export { readCommandListener } from './file/read.js';
 export { renameCommandListener } from './file/rename.js';
