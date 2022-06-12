@@ -1,8 +1,8 @@
 import { resolve } from 'path';
-import { createEmptyFile } from '../../../action/createEmptyFile.js';
+import { deleteFile } from '../../../action/deleteFile.js';
 import { InvalidInputException } from '../../../exception/invalidInput.js';
 
-export const addCommandListener = (command) => {
+export const deleteCommandListener = (command) => {
     const parameters = command.getParatemers();
 
     if (parameters.length !== 1) {
@@ -11,5 +11,5 @@ export const addCommandListener = (command) => {
 
     const baseDir = command.getCurrentPath().getCurrentWorkingDirectory();
     const filePath = resolve(baseDir, parameters[0]);
-    createEmptyFile(filePath);
+    deleteFile(filePath);
 }
