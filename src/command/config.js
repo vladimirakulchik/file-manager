@@ -18,6 +18,10 @@ export const commandConfig = [
         listeners.lsCommandListener,
     ],
     [
+        'cat',
+        listeners.readCommandListener,
+    ],
+    [
         'add',
         listeners.addCommandListener,
     ],
@@ -25,26 +29,13 @@ export const commandConfig = [
         'rn',
         listeners.renameCommandListener,
     ],
+
     [
         'rm',
         listeners.deleteCommandListener,
     ],
     [
-        'cat',
-        listeners.readCommandListener,
-    ],
-
-
-
-
-    [
         'os',
         listeners.osCommandListener,
     ],
-
-
-    // [
-    //     'error',
-    //     () => {throw new Error('oops');}
-    // ],
 ];
