@@ -21,6 +21,10 @@ export const commandConfig = [
         'add',
         listeners.addCommandListener,
     ],
+    [
+        'rn',
+        listeners.renameCommandListener,
+    ],
 
 
 
