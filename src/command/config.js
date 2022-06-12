@@ -29,6 +29,10 @@ export const commandConfig = [
         'rm',
         listeners.deleteCommandListener,
     ],
+    [
+        'cat',
+        listeners.readCommandListener,
+    ],
 
 
 
