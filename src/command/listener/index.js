@@ -6,6 +6,7 @@ export { osCommandListener } from './os.js';
 export { addCommandListener } from './file/add.js';
 export { copyCommandListener } from './file/copy.js';
 export { deleteCommandListener } from './file/delete.js';
+export { hashCommandListener } from './file/hash.js';
 export { moveCommandListener } from './file/move.js';
 export { readCommandListener } from './file/read.js';
 export { renameCommandListener } from './file/rename.js';

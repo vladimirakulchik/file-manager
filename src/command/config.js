@@ -45,4 +45,8 @@ export const commandConfig = [
         'os',
         listeners.osCommandListener,
     ],
+    [
+        'hash',
+        listeners.hashCommandListener,
+    ],
 ];
