@@ -1,7 +1,7 @@
 import { cpus } from 'os';
 
 export const getCpus = () => {
-    return cpus().map((cpu) => {
+    const cpuInfo = cpus().map((cpu) => {
         const speed = cpu.speed / 1000;
 
         return {
@@ -9,4 +9,9 @@ export const getCpus = () => {
             'speed': +speed.toFixed(2),
         };
     });
+
+    return {
+        'amount': cpuInfo.length,
+        'info': cpuInfo,
+    };
 };
