@@ -33,7 +33,10 @@ export const commandConfig = [
         'cp',
         listeners.copyCommandListener,
     ],
-
+    [
+        'mv',
+        listeners.moveCommandListener,
+    ],
     [
         'rm',
         listeners.deleteCommandListener,
