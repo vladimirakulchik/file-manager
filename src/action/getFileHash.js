@@ -4,9 +4,6 @@ const { createHash } = await import('crypto');
 
 export const getFileHash = (filePath) => {
     const content = readFileSync(filePath, 'utf-8');
-
-    console.log(content);
-
     const hash = createHash('sha256').update(content);
     const hexValue = hash.digest('hex');
 

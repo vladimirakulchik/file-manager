@@ -49,4 +49,12 @@ export const commandConfig = [
         'hash',
         listeners.hashCommandListener,
     ],
+    [
+        'compress',
+        listeners.compressCommandListener,
+    ],
+    [
+        'decompress',
+        listeners.decompressCommandListener,
+    ],
 ];
